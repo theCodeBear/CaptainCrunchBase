@@ -1,21 +1,36 @@
 <div class="container">
-	<div class="well">
-	<h1 class="text-center">Captain Crunchbase</h1>
-	</div>	
-	<br>
-		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
-					<div class="form-group">
+  <div class="well">
+    <h1 class="text-center">Captain Crunchbase</h1>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+      <form ng-submit="searchCCB()">
+        <div class="form-group">
+          <input type="text" class="form-control input-lg text-center" ng-model="searchQuery" placeholder="Parseeee" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Search</button>
+      </form>
+    </div>
+  </div>
 
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="Parseeee">
-					</div>
+  <br/>
 
-					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg">Search</button>
-				</form>
-			</div>
-		</div>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default" ng-repeat="org in orgs track by $index">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            {{org.name}}
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
+          Loading....
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

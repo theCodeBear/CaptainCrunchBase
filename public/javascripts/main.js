@@ -5,16 +5,13 @@ app.config(function($routeProvider) {
   .when("/", {
     controller: 'MainController',
     templateUrl: '/templates/main.html'
-  })
-    .when("/contact", {
-    controller: 'ContactController',
-    templateUrl: '/templates/contact.html'
   });
 });
 
-app.controller("MainController", function($scope) {
-
-});
-app.controller("ContactController", function($scope) {
-
+app.controller("MainController", function($http, $scope) {
+  $scope.searchCCB = function() {
+    $http.get("/apiv1/organizations?query=" + $scope.searchQuery).then(function(response) {
+      $scope.orgs = response.data;
+    });
+  }
 });
