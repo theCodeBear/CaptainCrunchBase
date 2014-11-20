@@ -21,14 +21,21 @@
       <div class="panel-heading" role="tab" id="heading-{{$index}}">
         <h4 class="panel-title">
           <a class="collapsed" data-parent="#orgs-data" data-target="#collapse{{$index}}" aria-expanded="false" aria-controls="collapse{{$index}}"
-             ng-click="collapse(org)">
+            ng-click="collapse(org)">
             {{org.name}}
           </a>
         </h4>
       </div>
       <div id="collapse{{$index}}" class="panel-collapse" role="tabpanel" aria-labelledby="heading{{$index}}" ng-show="org.visible">
         <div class="panel-body">
-          Loading {{org.name}} ....
+          <div ng-show="!dataLoaded"> Loading {{org.name}} .... </div>
+          <div ng-show="dataLoaded">
+            <ul>
+              <li> Description: {{details.short_description}}</li>
+              <li> Website: {{details.homepage_url}}</li>
+              <li> Founded on: {{details.founded_on}}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
